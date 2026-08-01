@@ -17,10 +17,10 @@ y_train = pd.read_csv("ytrain.csv")['ProdTaken'] # Ensure it's a Series
 y_test = pd.read_csv("ytest.csv")['ProdTaken'] # Ensure it's a Series
 
 # Define preprocessing steps
-numerical_features = ['Age', 'NumberOfPersonVisiting', 'NumberOfTrips', 
-                      'NumberOfChildrenVisiting', 'MonthlyIncome', 'PitchSatisfactionScore', 
+numerical_features = ['Age', 'NumberOfPersonVisiting', 'NumberOfTrips',
+                      'NumberOfChildrenVisiting', 'MonthlyIncome', 'PitchSatisfactionScore',
                       'NumberOfFollowups', 'DurationOfPitch']
-categorical_features = ['TypeofContact', 'CityTier', 'Occupation', 'Gender', 
+categorical_features = ['TypeofContact', 'CityTier', 'Occupation', 'Gender',
                         'PreferredPropertyStar', 'MaritalStatus', 'Designation', 'ProductPitched', 'Passport', 'OwnCar']
 
 # Create a column transformer for preprocessing
@@ -46,8 +46,8 @@ param_grid = {
 mlflow.set_experiment("Tourism Package Prediction")
 
 with mlflow.start_run():
-    # Log parameters
-    mlflow.log_params({key.replace('classifier__', ''): value for key, value in param_grid.items()})
+    # Log the full parameter grid as a single dictionary for reference
+    mlflow.log_param("hyperparameter_search_space", str(param_grid))
 
     # Perform GridSearchCV
     grid_search = GridSearchCV(
