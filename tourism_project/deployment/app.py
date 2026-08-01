@@ -4,7 +4,7 @@ import joblib
 
 # Load the trained model
 # The model is expected to be a Pipeline that includes preprocessing steps
-model = joblib.load('best_xgboost_model.joblib')
+model = joblib.load('tourism_project/deployment/best_xgboost_model.joblib')
 
 st.set_page_config(
     page_title="Tourism Package Purchase Prediction",
@@ -26,7 +26,7 @@ number_of_trips = st.slider('Number of Trips Annually', min_value=0, max_value=2
 number_of_children_visiting = st.slider('Number of Children Visiting (under 5)', min_value=0, max_value=5, value=0)
 monthly_income = st.number_input('Monthly Income', min_value=0.0, value=25000.0, format="%.2f")
 pitch_satisfaction_score = st.slider('Pitch Satisfaction Score (1-5)', min_value=1, max_value=5, value=3)
-number_of_followups = st.slider('Number of Follow-ups', min_value=0, max_value=10, value=3)
+number_of_followups = st.slider('NumberOfFollowups', min_value=0, max_value=10, value=3)
 duration_of_pitch = st.number_input('Duration of Pitch (minutes)', min_value=0.0, value=10.0, format="%.2f")
 
 # Categorical inputs
